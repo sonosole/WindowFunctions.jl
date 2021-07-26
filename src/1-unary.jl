@@ -1,6 +1,6 @@
 export barthann
 """
-    barthann(N::Int)
+    barthann(N::Int) -> AbstractArray
     Sidelobe peak attenuation = 35.9dB
 barthann window has a mainlobe at the origin and asymptotically decaying
 sidelobes on both sides. It is a linear combination of weighted Bartlett
@@ -49,11 +49,11 @@ end
 
 
 """
-    blackmanharris(args)
+    blackmanharris(N::Int) -> AbstractArray
     Sidelobe peak attenuation = 92dB
 Minimum four-term Blackman-Harris window.
 """
-function blackmanharris(args)
+function blackmanharris(N::Int)
     n = 2 * pi .* (0:N-1)/(N-1)
     a₀ = 0.35875
     a₁ = 0.48829
@@ -65,7 +65,7 @@ end
 
 export bohman
 """
-    bohman(N::Int)
+    bohman(N::Int) -> AbstractArray
     Sidelobe peak attenuation = 46dB
 Bohman window is the convolution of two half-duration cosine lobes.
 In the time domain, it is the product of a triangular window and a
