@@ -48,6 +48,7 @@ function blackman(N::Int)
 end
 
 
+export blackmanharris
 """
     blackmanharris(N::Int) -> AbstractArray
     Sidelobe peak attenuation = 92dB

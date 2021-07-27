@@ -6,26 +6,26 @@ results from truncation of an infinite series.
 
 # Available Window Functions
 
-| Function       | Window Type                                    |
-| -------------- | ---------------------------------------------- |
-| barthann       | Modified Bartlett-Hann                         |
-| bartlett       | Bartlett                                       |
-| blackman       | Blackman                                       |
-| blackmanharris | Minimum four-term Blackman-Harris              |
-| bohman         | Bohman                                         |
-| cheb           | Chebyshev                                      |
-| flattop        | Flat top weighted                              |
-| hamming        | Hamming                                        |
-| hanning        | Hann (Hanning)                                 |
-| nuttall        | Nuttall-defined minimum 4-term Blackman-Harris |
-| parzen         | Parzen (de la Vallée Poussin)                  |
-| rectangular    | Rectangular                                    |
-| triangular     | Triangular                                     |
-| tukey          | Tukey (tapered cosine)                         |
-| taylor         | Taylor                                         |
-| gauss          | Gaussian                                       |
-| kaiser         | Kaiser                                         |
-| enbw           | Equivalent noise bandwidth                     |
+    | Function       | Window Type                                    |
+    | -------------- | ---------------------------------------------- |
+    | barthann       | Modified Bartlett-Hann                         |
+    | bartlett       | Bartlett                                       |
+    | blackman       | Blackman                                       |
+    | blackmanharris | Minimum four-term Blackman-Harris              |
+    | bohman         | Bohman                                         |
+    | cheb           | Chebyshev                                      |
+    | flattop        | Flat top weighted                              |
+    | hamming        | Hamming                                        |
+    | hanning        | Hann (Hanning)                                 |
+    | nuttall        | Nuttall-defined minimum 4-term Blackman-Harris |
+    | parzen         | Parzen (de la Vallée Poussin)                  |
+    | rectangular    | Rectangular                                    |
+    | triangular     | Triangular                                     |
+    | tukey          | Tukey (tapered cosine)                         |
+    | taylor         | Taylor                                         |
+    | gauss          | Gaussian                                       |
+    | kaiser         | Kaiser                                         |
+    | enbw           | Equivalent noise bandwidth                     |
 
 """
 module WindowFunctions
