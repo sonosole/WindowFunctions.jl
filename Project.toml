@@ -1,8 +1,8 @@
 name = "WindowFunctions"
 uuid = "f8d1b8c8-e2db-43c1-b085-b5de5ced18ed"
 authors = ["Taiyang Zhao <sonosole@163.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 
 [compat]
-julia = "1.0 - 1.6"
+julia = "1.0 - 1.8"

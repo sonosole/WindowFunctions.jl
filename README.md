@@ -6,7 +6,7 @@
 In both digital filter design and spectral estimation, the choice of a windowing
 function can play an important role in determining the quality of overall results.
 The main role of the window is to damp out the effects of the Gibbs phenomenon that
-results from truncation of an infinite series.
+resulted from truncation of an infinite series.
 
 ## Methods
 
@@ -49,7 +49,29 @@ Pkg.add("WindowFunctions")
 using Plots
 using WindowFunctions
 
-plot(gauss(256,0.20),label="gaussian 0.20")
-plot!(gauss(256,0.35),label="gaussian 0.35")
-plot!(flattop(256),label="flattop")
+winlist = [barthann,
+           bartlett,
+           blackman,
+           blackmanharris,
+           bohman,
+           flattop,
+           hamming,
+           hanning,
+           nuttall,
+           parzen,
+           rectangular,
+           triangular,
+           gauss,
+           tukey]
+
+for win in winlist
+    plot(win(256, dtype=Float32),
+         label=string(win),
+         fillrange = 0,
+         fillalpha = 0.3,
+         show=true)
+    ylims!(-0.13,1.18)
+    xlims!(1-20,256+20)
+    sleep(1)
+end
 ```
