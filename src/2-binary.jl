@@ -38,3 +38,65 @@ function gauss(N::Int, a::AbstractFloat=0.4; dtype::DataType=Float32)
     end
     return w
 end
+
+
+export Γ, I₀, Iᵦ, kaiser
+"""
+    Γ(n::Integer)
+Γ(n) = (n-1)!
+"""
+function Γ(n::Integer)
+    x = BigInt(1)
+    for i = 2:n-1
+        x *= i
+    end
+    return x
+end
+
+
+"""
+    I₀(x::Real, N::Integer) -> s::Real
+Zero order modified Bessel function of the first kind.
+    I₀(x) = ∑ᵢ x²ⁱ / Γ(i+1)², i = 0:1:Inf
+"""
+function I₀(x::Real, N::Integer)
+    s  = 0
+    x /= 2
+    for n in 0:N
+        s += x^(2*n) / Γ(n+1)^2
+    end
+    return s
+end
+
+
+"""
+    Iᵦ(x::Real, β::Integer, N::Integer) -> s::Real
+Iᵦ is the β order modified Bessel function of the first kind.
+    Iᵦ(x) = ∑ᵢ x²ⁱ⁺ᵝ / (Γ(i+1) * Γ(i+β+1)), i = 0:1:Inf
+"""
+function Iᵦ(x::Real, β::Integer, N::Integer)
+    s  = 0
+    x /= 2
+    for n in 0:N
+        s += x^(2*n + β) / (Γ(n+1) * Γ(n+β+1))
+    end
+    return s
+end
+
+
+"""
+    kaiser(N::Integer, α::Real, M::Integer; dtype::DataType=Float32) -> w::Array
+The Kaiser window is an approximation to the prolate spheroidal window, for\n
+which the ratio of the mainlobe energy to the sidelobe energy is maximized.
+α is any real number
+"""
+function kaiser(N::Integer, α::Real, M::Integer; dtype::DataType=Float32)
+    πα = π * α
+    w  = zeros(dtype, N)
+    D  = I₀(πα, M)
+    for n = 0:N-1
+        w[n+1] = I₀(πα * sqrt(1 - (2n/(N-1) - 1)^2), M) / D
+    end
+    return w
+end
+

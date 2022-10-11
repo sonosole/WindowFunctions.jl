@@ -28,16 +28,12 @@ resulted from truncation of an infinite series.
 | tukey          | Tukey (tapered cosine)                         |
 | ~~taylor~~         | Taylor                                         |
 | gauss          | Gaussian                                       |
-| ~~kaiser~~         | Kaiser                                         |
+| kaiser         | Kaiser                                         |
 | ~~enbw~~           | Equivalent noise bandwidth                     |
 
 
 ## Installation
-To install the released stable version, enter the REPL mode
-```julia
-] add WindowFunctions
-```
-or
+To install the released stable version, run
 ```julia
 using Pkg
 Pkg.add("WindowFunctions")
@@ -48,6 +44,8 @@ Pkg.add("WindowFunctions")
 ```julia
 using Plots
 using WindowFunctions
+
+kaiser5(N; dtype::DataType=Float32) = kaiser(N, 5.0, 10, dtype=dtype)
 
 winlist = [barthann,
            bartlett,
@@ -62,7 +60,8 @@ winlist = [barthann,
            rectangular,
            triangular,
            gauss,
-           tukey]
+           tukey,
+           kaiser5]
 
 for win in winlist
     plot(win(256, dtype=Float32),
